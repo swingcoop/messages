@@ -23,7 +23,8 @@ async function get(ctx) {
       const messages = `
          SELECT data 
            FROM messages
-          where data->>'endDate' > '${lastWeek}'`;
+          where data->>'endDate' > '${lastWeek}'
+          order by data->>'startDate'`;
 
       var res = await client.query(messages);
       client.end();
